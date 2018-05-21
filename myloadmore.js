@@ -1,12 +1,13 @@
-jQuery(function($){
-	$('.wordpress_loadmore').click(function()
-	{ 
+jQuery(document).ready(function($)
+{
+	$(".wordpress_load_more").click(function(){
+
 		var button = $(this), data = {
-			'action'	: 	'load_more',
-			'query'		: 	load_more_params.posts, // that's how we get params from wp_localize_script() function
-			'max' 		: 	load_more_params.max_page,
-			'page' 		: 	load_more_params.current_page,
-			'results'	: 	load_more_params.results
+			action		: 	'load_more',
+			// query		: 	wordpress_load_more_params.posts, // that's how we get params from wp_localize_script() function
+			max 		: 	wordpress_load_more_params.max_page,
+			// results		: 	wordpress_load_more_params.results,
+			page 		: 	wordpress_load_more_params.current_page
 			
 		};
 
@@ -14,9 +15,9 @@ jQuery(function($){
 
 		$.ajax(
 		{
-			url		: 	load_more_params.ajaxurl, // AJAX handler
-			data 	: 	data,
+			url		: 	wordpress_load_more_params.ajaxurl, // AJAX handler
 			type 	: 	'POST',
+			data 	: 	data,
 			beforeSend : function ( xhr ) 
 			{
 				console.log("Loading");
@@ -30,13 +31,13 @@ jQuery(function($){
 				if(data) 
 				{ 
 					console.log("We got data!");
-					console.log(load_more_params.current_page);
-					console.log(load_more_params.max_page);
+					console.log(wordpress_load_more_params.current_page);
+					console.log(wordpress_load_more_params.max_page);
 
 					button.text( 'Flere indlæg' ).prev().before(data); // insert new posts
-					load_more_params.current_page++;
+					wordpress_load_more_params.current_page++;
  
-					if ( load_more_params.current_page == load_more_params.max_page ) 
+					if ( wordpress_load_more_params.current_page == wordpress_load_more_params.max_page ) 
 					{
 						console.log("Last page! Remove button");
 

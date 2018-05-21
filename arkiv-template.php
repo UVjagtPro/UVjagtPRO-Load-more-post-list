@@ -68,7 +68,7 @@
 					if (  $wp_query->max_num_pages > 1 )
 						echo '
 							<div class="wordpress_wrapper">
-								<div class="wordpress_loadmore">Flere indlæg</div>
+								<div class="wordpress_load_more" id="wordpress_loadmore">Flere indlæg</div>
 							</div>'; // you can use <a> as well
 					?>
 				</nav>
